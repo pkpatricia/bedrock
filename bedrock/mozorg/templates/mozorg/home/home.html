@@ -142,6 +142,7 @@
         {% endif %}
         </p>
 
+        {% block icon_links_who %}
         <ul id="icon-links-who" class="icon-links">
         {% if l10n_has_tag('home-update-20171116') %}
           <li id="information-trust">
@@ -179,6 +180,7 @@
           {% endif %}
         {% endif %}
         </ul>
+        {% endblock %}
       </div>
     </section>
 
@@ -193,6 +195,7 @@
         {% endtrans %}
         </p>
 
+        {% block icon_links_innovate %}
         <ul id="icon-links-innovate" class="icon-links">
         {% if l10n_has_tag('home-update-20171116') %}
           <li id="common-voice">
@@ -213,6 +216,7 @@
             <a rel="external" href="https://research.mozilla.org/rust/"><svg class="icon"><use xlink:href="#icon-rust"></use></svg>{{ _('Rust') }}</a>
           </li>
         </ul>
+        {% endblock %}
       </div>
     </section>
   </section>{#-- /#who-innovate-wrapper --#}

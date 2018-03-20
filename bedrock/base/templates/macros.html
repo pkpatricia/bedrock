@@ -35,11 +35,11 @@
   {% endfor %}
 {%- endmacro %}
 
-{% macro lazy_image(image_url, placeholder_url) -%}
+{% macro lazy_image(image_url, image_highres_url, placeholder_url, image_class) -%}
 <div class="lazy-image-container">
-  <img src="{{ static(placeholder_url) }}" data-src="{{ static(image_url) }}" alt="">
+  <img {% if image_class %}class="{{ image_class }}"{% endif %} src="{{ static(placeholder_url) }}" data-src="{{ static(image_url) }}" {% if image_highres_url %}data-srcset="{{ static(image_highres_url) }} 2x"{% endif %} alt="">
   <noscript>
-    <img src="{{ static(image_url) }}" alt="">
+    <img {% if image_class %}class="{{ image_class }}"{% endif %} src="{{ static(image_url) }}" {% if image_highres_url %}srcset="{{ static(image_highres_url) }} 2x"{% endif %} alt="">
   </noscript>
 </div>
 {%- endmacro %}

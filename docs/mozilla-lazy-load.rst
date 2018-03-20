@@ -16,7 +16,7 @@ Usage
 Each image to be lazy loaded requires the following HTML structure::
 
     <div class="lazy-image-container">
-        <img src="path/to/placeholder.png" data-src="path/to/image.png" alt="">
+        <img src="path/to/placeholder.png" data-src="path/to/image.png" data-srcset="path/to/image-high-res.png 2x" alt="">
         <noscript>
             <img src="path/to/image.png" alt="">
         </noscript>
@@ -28,7 +28,11 @@ This HTML snippet is also available via a handy macro that can be imported into 
 
 The macro can then be used like so in a template like so::
 
-    {{ lazy_image('path/to/image.png', 'path/to/placeholder.png') }}
+    {{ lazy_image(image_url='path/to/image.png', image_highres_url='path/to/image-high-res.png', placeholder_url='path/to/placeholder.png', image_class='some-class-name') }}
+
+.. Note::
+
+    Parameters ``image_url`` and ``placeholder_url`` are both required, but ``image_highres_url` and ``image_class`` parameters are entirely optional.
 
 To initialize the lazy loading plugin, in your JS run::
 
