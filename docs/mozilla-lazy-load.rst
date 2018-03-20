@@ -8,15 +8,15 @@
 Mozilla Image Lazy Loader
 =========================
 
-``mozilla-lazy-load.js`` is a JavaScript library that will lazy load ``<img>`` elements on a web page as the user scrolls the viewport. It requires support for `Intersection Observer API`_, and will fallback to loading all images on page load in non-supporting browsers.**
+``mozilla-lazy-load.js`` is a JavaScript library that will lazy load ``<img>`` elements on a web page as the user scrolls the viewport. It requires support for `Intersection Observer API`_, and will fallback to loading all images on page load in non-supporting browsers.
 
 Usage
 -----
 
-Each image to be lazy loaded requires the following HTML structure::
+Each image to be lazy loaded should following HTML structure::
 
     <div class="lazy-image-container">
-        <img src="path/to/placeholder.png" data-src="path/to/image.png" alt="">
+        <img src="path/to/placeholder.png" data-src="path/to/image.png" data-srcset="path/to/image-high-res.png 2x" alt="">
         <noscript>
             <img src="path/to/image.png" alt="">
         </noscript>
@@ -28,7 +28,19 @@ This HTML snippet is also available via a handy macro that can be imported into 
 
 The macro can then be used like so in a template like so::
 
-    {{ lazy_image('path/to/image.png', 'path/to/placeholder.png') }}
+    {{ lazy_image(image_url='path/to/image.png', image_highres_url='path/to/image-high-res.png', placeholder_url='path/to/placeholder.png', image_class='some-class-name') }}
+
+Required Parameters
+~~~~~~~~~~~~~~~~~~~
+
+- ``image_url`` path to final image ``src``.
+- ``placeholder_url`` path to placeholder image for use before final image is loaded.
+
+Optional parameters
+~~~~~~~~~~~~~~~~~~~
+
+- ``image_highres_url`` path to high resolution alternative of ``image_url``
+- ``image_class`` image class name should your page CSS require one.
 
 To initialize the lazy loading plugin, in your JS run::
 
